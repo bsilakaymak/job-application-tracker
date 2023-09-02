@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  jat_fe:
+      build: ./jat-fe
+      ports:
+      - "8080:8080"
+      depends_on:
+      - jat_db
+      container_name: jat_fe
+      volumes:
+       - ./jat-fe:/app/
+       - /app/node_modules
+
+  jat_be:
+    container_name: jat_be
+    build: ./jat-be
+    image: job-tracker-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PG_DB=node_live_db
+      - PG_USER=sila
+      - PG_PASSWORD=12345
+      - PG_HOST=jat_db
+    depends_on:
+      - jat_db
+  jat_db:
+    container_name: jat_db
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=node_live_db
+      - POSTGRES_USER=sila
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - node_db_data:/var/lib/postgresql/data
+
+  nginx:
+    container_name: jat_reverse_proxy
+    depends_on:
+      - jat_fe
+      - jat_be
+    restart: always
+    build: ./nginx
+    ports:
+      - "3001:80"
+
+volumes:
+  node_db_data: {}

@@ -1,0 +1,8 @@
+export enum JobContextActions {
+  GET_JOBS = "GET_JOBS",
+  GET_JOB = "GET_JOB",
+  CREATE_JOB = "CREATE_JOB",
+  UPDATE_JOB = "UPDATE_JOB",
+  DELETE_JOB = "DELETE_JOB",
+  JOBS_ERROR = "JOBS_ERROR",
+}
