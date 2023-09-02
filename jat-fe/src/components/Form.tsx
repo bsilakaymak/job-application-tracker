@@ -24,7 +24,7 @@ const Form = () => {
         appliedVia: "",
         status: "",
         remarks: "",
-        open: false,
+        open: true,
         feedback: "",
       };
 
@@ -98,10 +98,11 @@ const Form = () => {
         <Select
           error={errors.status}
           options={selectOptions}
+          value={formData.status}
           name="status"
           onChange={handleInputChange}
           label="Status"
-          id="applciation-status"
+          id="application-status"
         />
         <div>
           Job status:
