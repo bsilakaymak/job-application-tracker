@@ -16,16 +16,15 @@ const Form = () => {
   const initialState = isEdit
     ? currentJob
     : {
-        jobId: "",
         jobTitle: "",
         jobDescription: "",
         companyName: "",
-        companyContact: "",
+        companyContact: "N/A",
         appliedVia: "",
         status: "",
-        remarks: "",
+        remarks: "N/A",
         open: true,
-        feedback: "",
+        feedback: "N/A",
       };
 
   const { formData, errors, handleInputChange, validateForm } = useForm(
@@ -104,8 +103,7 @@ const Form = () => {
           label="Status"
           id="application-status"
         />
-        <div>
-          Job status:
+        <div className="grid grid-cols-2">
           <RadioButton
             label="Open"
             id="open"
