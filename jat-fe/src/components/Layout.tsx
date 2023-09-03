@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { footerContent } from "../data";
 import Footer from "./Footer";
 import Header from "./Header";
 import Navbar from "./Navbar";
@@ -12,7 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <main className="p-4 md:px-10 min-h-[calc(100vh-400px)] md:p-8">
         {children}
       </main>
-      <Footer />
+      <Footer footerContent={footerContent} />
     </div>
   );
 };

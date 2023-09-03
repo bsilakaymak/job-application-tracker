@@ -1,5 +1,5 @@
 import { useState } from "react";
-import navData from "../navData";
+import { navData } from "../data";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

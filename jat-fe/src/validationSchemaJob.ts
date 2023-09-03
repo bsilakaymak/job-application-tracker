@@ -9,19 +9,19 @@ export const validationSchema = {
     if (!value || value.trim() === "") {
       return "Job Title is required";
     }
-    return null; // No error
+    return null;
   },
   jobDescription: (value: string) => {
     if (!value || value.trim() === "") {
       return "Job Description is required";
     }
-    return null; // No error
+    return null;
   },
   companyName: (value: string) => {
     if (!value || value.trim() === "") {
       return "Company Name is required";
     }
-    return null; // No error
+    return null;
   },
   companyContact: (value: any) => {
     if (value != "N/A") {
@@ -29,36 +29,36 @@ export const validationSchema = {
         return "Enter a valid email address for Company Contact";
       }
     }
-    return null; // No error
+    return null;
   },
   appliedVia: (value: string) => {
     if (!value || value.trim() === "") {
       return "Applied Via is required";
     }
-    return null; // No error
+    return null;
   },
   status: (value: string) => {
     if (!value || value.trim() === "") {
       return "Status is required";
     }
-    return null; // No error
+    return null;
   },
   remarks: (value: string) => {
     if (!value || value.trim() === "") {
       return "Remarks are required";
     }
-    return null; // No error
+    return null;
   },
   open: (value: boolean) => {
     if (typeof value !== "boolean") {
       return "Open must be a boolean value (true or false)";
     }
-    return null; // No error
+    return null;
   },
   feedback: (value: string) => {
     if (!value || value.trim() === "") {
       return "Feedback is required";
     }
-    return null; // No error
+    return null;
   },
 };

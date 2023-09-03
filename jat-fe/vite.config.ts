@@ -8,5 +8,9 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 8080,
+    hmr: {
+      host: "localhost",
+      protocol: "ws",
+    },
   },
 });

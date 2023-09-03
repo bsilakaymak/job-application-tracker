@@ -1,2 +1,12 @@
 # job-application-tracker
 job-application-tracker
+
+For personal use, to track the jobs I have applied and update their status and record my learnings, nothing fancy.
+- BE: - a simple node.js app with Express, Postgres and Sequalize for ORM.
+- FE: - React/TS/TailwindCSS
+
+Get started
+- create your own .httpaswd file ([this](https://docs.openshift.com/container-platform/4.8/authentication/identity_providers/configuring-htpasswd-identity-provider.html) might be helpful) under nginx directory (make sure the file name matches the one copied to container in Dockerfile when creating your own identity file), or you can remove the basic auth all together but since this is a very basic app with no authentication, good to have it.
+- just docker-compose up and you should see it running on http://localhost:3001, use locally or deploy whereever
+
+
