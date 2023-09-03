@@ -8,9 +8,6 @@ services:
     depends_on:
       - jat_db
     container_name: jat_fe
-    volumes:
-      - ./jat-fe:/app/
-      - /app/node_modules
 
   jat_be:
     networks:
