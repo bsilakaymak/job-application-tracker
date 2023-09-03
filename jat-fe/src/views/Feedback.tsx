@@ -1,17 +1,23 @@
+import { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
-import mockData from "../mockData";
+import { JobContext } from "../context";
+import { uuidv4 } from "../utils";
 
 const Feedback = () => {
-  let feedbackPoints: string[] = [];
-  mockData.map((job) => {
-    feedbackPoints.push(job.feedback);
-  });
+  const { jobs, getAllJobs } = useContext(JobContext);
+  useEffect(() => {
+    getAllJobs();
+  }, []);
+
+  const points: string[] = [];
+  jobs.map((job) => points.push(job.feedback));
   return (
     <Layout>
-      <ul>
-        {feedbackPoints.length > 0 &&
-          feedbackPoints.map((item) => <li key={item}>{item}</li>)}
-      </ul>
+      <h2 className="text-bold text-lg">NOTES FROM INTERVIEWS</h2>
+      <ol className="list-disc">
+        {points.length > 0 &&
+          points.map((item) => <li key={uuidv4()}>{item}</li>)}
+      </ol>
     </Layout>
   );
 };

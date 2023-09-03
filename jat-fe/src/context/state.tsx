@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect, useReducer, useState } from "react";
-
 import { JobContextActions } from "./actions";
 import { JobContext } from "./context";
 import { JobReducer } from "./reducer";

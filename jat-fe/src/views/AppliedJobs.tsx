@@ -11,7 +11,9 @@ const AppliedJobs = () => {
   return (
     <Layout>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {jobs && jobs.map((job) => <JobListing key={job.jobId} job={job} />)}
+        {jobs &&
+          jobs.length > 0 &&
+          jobs.map((job) => <JobListing key={job.jobId} job={job} />)}
       </div>
     </Layout>
   );
