@@ -1,18 +1,20 @@
-version: "3.9"
-
 services:
   jat_fe:
-      build: ./jat-fe
-      ports:
+    networks:
+      - my_network
+    build: ./jat-fe
+    ports:
       - "8080:8080"
-      depends_on:
+    depends_on:
       - jat_db
-      container_name: jat_fe
-      volumes:
-       - ./jat-fe:/app/
-       - /app/node_modules
+    container_name: jat_fe
+    volumes:
+      - ./jat-fe:/app/
+      - /app/node_modules
 
   jat_be:
+    networks:
+      - my_network
     container_name: jat_be
     build: ./jat-be
     image: job-tracker-api
@@ -26,6 +28,8 @@ services:
     depends_on:
       - jat_db
   jat_db:
+    networks:
+      - my_network
     container_name: jat_db
     image: postgres:12
     ports:
@@ -38,6 +42,8 @@ services:
       - node_db_data:/var/lib/postgresql/data
 
   nginx:
+    networks:
+      - my_network
     container_name: jat_reverse_proxy
     depends_on:
       - jat_fe
@@ -49,3 +55,6 @@ services:
 
 volumes:
   node_db_data: {}
+networks:
+  my_network:
+    driver: bridge
