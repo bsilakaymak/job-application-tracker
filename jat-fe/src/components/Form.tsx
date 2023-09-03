@@ -8,7 +8,7 @@ import { validationSchema } from "../validationSchema";
 import selectOptions from "../selectOptions";
 import { FormEvent, useContext } from "react";
 import { JobContext } from "../context";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Form = () => {
   const { updateJob, createJob, currentJob } = useContext(JobContext);
@@ -21,7 +21,7 @@ const Form = () => {
         companyName: "",
         companyContact: "N/A",
         appliedVia: "",
-        status: "",
+        status: "Application Sent",
         remarks: "N/A",
         open: true,
         feedback: "N/A",
@@ -33,6 +33,7 @@ const Form = () => {
   );
 
   console.log("errors", errors);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,8 +44,10 @@ const Form = () => {
     }
     if (currentJob && isEdit) {
       updateJob(currentJob.jobId, formData);
+      navigate(`/job/${currentJob.jobId}`);
     } else {
       createJob(formData);
+      navigate("/");
     }
   };
 

@@ -24,8 +24,10 @@ export const validationSchema = {
     return null; // No error
   },
   companyContact: (value: any) => {
-    if (!value || !isValidEmail(value)) {
-      return "Enter a valid email address for Company Contact";
+    if (value != "N/A") {
+      if (!isValidEmail(value)) {
+        return "Enter a valid email address for Company Contact";
+      }
     }
     return null; // No error
   },
