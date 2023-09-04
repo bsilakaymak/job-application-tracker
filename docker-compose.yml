@@ -18,7 +18,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - PG_DB=node_live_db
+      - PG_DB=jat_db
       - PG_USER=sila
       - PG_PASSWORD=12345
       - PG_HOST=jat_db
@@ -28,15 +28,15 @@ services:
     networks:
       - my_network
     container_name: jat_db
-    image: postgres:12
+    image: postgres:13
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=node_live_db
+      - POSTGRES_DB=jat_db
       - POSTGRES_USER=sila
       - POSTGRES_PASSWORD=12345
     volumes:
-      - node_db_data:/var/lib/postgresql/data
+      - jat_db_data:/var/lib/postgresql/data
 
   nginx:
     networks:
@@ -51,7 +51,7 @@ services:
       - "3001:80"
 
 volumes:
-  node_db_data: {}
+  jat_db_data: {}
 networks:
   my_network:
     driver: bridge
