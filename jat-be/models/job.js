@@ -9,14 +9,14 @@ const Job = db.define("job", {
     primaryKey: true,
   },
   jobTitle: Sequelize.STRING,
-  jobDescription: Sequelize.STRING,
+  jobDescription: Sequelize.STRING(1000),
   companyName: Sequelize.STRING,
   companyContact: Sequelize.STRING,
   appliedVia: Sequelize.STRING,
   status: Sequelize.STRING,
-  remarks: Sequelize.STRING,
+  remarks: Sequelize.STRING(1000),
   open: Sequelize.BOOLEAN,
-  feedback: Sequelize.STRING,
+  feedback: Sequelize.STRING(2000),
 });
 
 module.exports = Job;
