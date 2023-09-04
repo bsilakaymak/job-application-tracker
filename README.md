@@ -4,7 +4,7 @@
 For personal use, to track the jobs I have applied and update their status and record my learnings, nothing fancy.
 - BE: - a simple node.js app with Express, Postgres and Sequalize for ORM.
 - FE: - React/TS/TailwindCSS
-- 
+  
 ## Prerequeqistes
 - Node v18.14.0
 - Docker
