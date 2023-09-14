@@ -1,0 +1,62 @@
+services:
+  jat_fe:
+    networks:
+      - my_network
+    build:
+      context: ./jat-fe
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      - jat_db
+    container_name: jat_fe
+    volumes:
+      - ./jat-fe:/app/
+      - /app/node_modules
+
+  jat_be:
+    networks:
+      - my_network
+    container_name: jat_be
+    build: ./jat-be
+    image: job-tracker-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PG_DB=jat_db
+      - PG_USER=sila
+      - PG_PASSWORD=12345
+      - PG_HOST=jat_db
+    depends_on:
+      - jat_db
+  jat_db:
+    networks:
+      - my_network
+    container_name: jat_db
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=jat_db
+      - POSTGRES_USER=sila
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - jat_db_data:/var/lib/postgresql/data
+
+  nginx:
+    networks:
+      - my_network
+    container_name: jat_reverse_proxy
+    depends_on:
+      - jat_fe
+      - jat_be
+    restart: always
+    build: ./nginx
+    ports:
+      - "3001:80"
+
+volumes:
+  jat_db_data: {}
+networks:
+  my_network:
+    driver: bridge

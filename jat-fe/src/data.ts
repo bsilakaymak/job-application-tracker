@@ -16,6 +16,7 @@ export const selectOptions = [
   },
   { label: "No response from employer", value: "No response from employer" },
   { label: "Application rejected", value: "Application rejected" },
+  { label: "Got an offer", value: "Got an offer" },
 ];
 
 // replace this with whatever your reason is for looking for a job
